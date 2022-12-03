@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   
+ 
+  
   def index 
     reviews = Review.all
     render json: reviews
@@ -12,7 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def create 
-    review = Review.create(review_params)
+    review = Review.create!(review_params)
     render json: review, status: :created
   end
 

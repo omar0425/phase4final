@@ -34,39 +34,39 @@ Movie.create([
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Top Gun: Maverick",
+    category: "Action",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg",
+    description: "After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.",
+    year: 2022,
+    length: 131
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "The Notebook",
+    category: "Romance",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMTk3OTM5Njg5M15BMl5BanBnXkFtZTYwMzA0ODI3._V1_.jpg",
+    description: "The Notebook is a contemporary love story set in the pre- and post-World War II era. Noah and Allie spend a wonderful summer together, but her family and the socio-economic realities of the time prevent them from being together.",
+    year: 2004,
+    length: 124
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "WALL-E",
+    category: "Family",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_.jpg",
+    description: "WALL•E (Waste Allocation Load Lifter Earth-Class) is the last robot left on Earth, programmed to clean up the planet, one trash cube at a time. However, after 700 years, he's developed one little glitch—a personality. He's extremely curious, highly inquisitive, and a little lonely.",
+    year: 2008,
+    length: 97
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Office Space",
+    category: "Comedy",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BOTA5MzQ3MzI1NV5BMl5BanBnXkFtZTgwNTcxNTYxMTE@._V1_FMjpg_UX1000_.jpg",
+    description: " Three company workers who hate their jobs decide to rebel against their greedy boss. In the Initech office, the insecure Peter Gibbons hates his job and the obnoxious Division VP Bill Lumbergh who has just hired two efficiency consultants to downsize the company.",
+    year: 1999,
+    length: 89
 
   },
   {
@@ -142,4 +142,10 @@ Movie.create([
 
   },
 ])
+
+User.create([{
+  username: "Omar",
+  password_digest:"nfajernkjf1221343nrkwlmekas"
+
+}])
 puts "🌱 Done seeding!"
