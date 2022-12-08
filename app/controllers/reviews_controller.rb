@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  
+  #authorize
  
   
   def index 
@@ -21,6 +21,12 @@ class ReviewsController < ApplicationController
   def update
     review = find_review
     review.update(review_params)
+    render json: review
+  end
+
+  def destroy
+    review = find_review
+    review.destroy
     render json: review
   end
 

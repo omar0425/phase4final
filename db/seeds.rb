@@ -70,48 +70,48 @@ Movie.create([
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "The Mask",
+    category: "Comedy",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BOWExYjI5MzktNTRhNi00Nzg2LThkZmQtYWVkYjRlYWI2MDQ4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+    description: "Bank clerk Stanley Ipkiss is transformed into a manic superhero when he wears a mysterious mask. Timid bank clerk, Stanley Ipkiss (Jim Carrey). Unfortunately, he's too gentle, and is unable to handle confrontations. After one of the worst days, he finds a mask which depicts Loki, the Norse god of mischief.",
+    year: 1994,
+    length: 101
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "500 Days of Summer",
+    category: "Romance",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMTk5MjM4OTU1OV5BMl5BanBnXkFtZTcwODkzNDIzMw@@._V1_.jpg",
+    description: "After being dumped by the girl he believes to be his soulmate, hopeless romantic Tom Hansen reflects on their relationship to try and figure out where things went wrong and how he can win her back.",
+    year: 2009,
+    length: 95
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Ferris Bueller's Day Off",
+    category: "Comedy",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMDA0NjZhZWUtNmI2NC00MmFjLTgwZDYtYzVjZmNhMDVmOTBkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+    description: "A high school slacker pretends to be sick to skip school and have an exciting day off alongside his girlfriend and his best buddy through Chicago, while trying to outwit his obsessive school principal and his unconformited sister along the way.",
+    year: 1986,
+    length: 98
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Harry Potter and the Sorcerer's Stone",
+    category: "Adventure",
+    poster_url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/0/0e/Philostone.jpg/revision/latest?cb=20160307194850",
+    description: "It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft and Wizardry and he finds out he's a wizard.",
+    year: 2001,
+    length: 152
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "The Lost City",
+    category: "Romance",
+    poster_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2JMLFkh93i-HVyMvA7HBKCs_uaf10HUEDL9UhhOOBLJ-vZj7z",
+    description: "A reclusive romance novelist on a book tour with her cover model gets swept up in a kidnapping attempt that lands them both in a cutthroat jungle adventure. A reclusive romance novelist on a book tour with her cover model gets swept up in a kidnapping attempt that lands them both in a cutthroat jungle adventure.",
+    year: 2022,
+    length: 112
 
   },
   {
@@ -143,9 +143,9 @@ Movie.create([
   },
 ])
 
-User.create([{
-  username: "Omar",
-  password_digest:"nfajernkjf1221343nrkwlmekas"
+# User.create([{
+#   username: "Omar",
+#   password_digest:"nfajernkjf1221343nrkwlmekas"
 
-}])
+# }])
 puts "🌱 Done seeding!"

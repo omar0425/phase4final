@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  def index 
+  before_action :authorize
+  skip_before_action :authorize, only: [:index]
+def index 
     movies = Movie.all
     render json: movies
   end
@@ -11,7 +13,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   end
 
   def create 
-    movie = Movie.create(movie_params)
+    movie = Movie.create!(movie_params)
     render json: movie
   end
 
@@ -31,6 +33,10 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   end
   def render_not_found_response
     render json: { error: "Movie not found"}, status: :not_found
+  end
+  
+  def authorize
+    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
   end
   
 end
