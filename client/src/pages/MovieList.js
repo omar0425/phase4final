@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react'
+import MovieCard from '../components/MovieCard';
 
 const MovieList = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -21,7 +22,12 @@ const MovieList = () => {
   );
 
   return (
-    <div>MovieList</div>
+    <div>
+  <section>
+    {displayedMovies.map((movie) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ))}
+  </section></div>
   )
 }
 
