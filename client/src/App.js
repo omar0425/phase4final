@@ -1,11 +1,16 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, {useState} from "react";
 import "./App.css";
 import Signup from "./pages/Signup";
 import Movies from "./pages/Movies";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 
+
+
 function App() {
+  const [user, setUser] = useState(null)
+  console.log("user:", user)
   return (
     <div className='App'>
       <BrowserRouter>
@@ -15,10 +20,10 @@ function App() {
             <Route exact path="/">
               <Movies />
               </Route>
-            <Route exact path="/login">
+            <Route path="/login" setUser={setUser}>
               <Login />
               </Route>
-            <Route exact path="/signup">
+            <Route path="/signup" setUser={setUser}>
               <Signup />
               </Route>
           </Switch>
@@ -28,9 +33,6 @@ function App() {
   );
 }
 
-//dashBoard(homepage)
-//login
-//signup
-//project
+
 
 export default App;

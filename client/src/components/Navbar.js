@@ -15,7 +15,7 @@ const Navbar = () => {
           <Link to="/signup">Signup</Link>
         </li>
         <li>
-          <button classname = 'btn'>Logout</button>
+          <button className = 'btn'>Logout</button>
         </li>
       </ul>
     </div>

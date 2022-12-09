@@ -1,20 +1,48 @@
-import React, {useState} from 'react'
-import './Signup.css'
+import React, { useState } from "react";
+import "./Signup.css";
 
-const Signup = () => {
-  const[username,setUserName] = useState('')
-  const [password, setPassword] =useState('')
-  const [passWordConfirmation, SetPasswordConfirmation] = useState('')
-  function handleSubmit(){}
+function Signup({ setUser }){
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passWordConfirmation, SetPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passWordConfirmation,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => onSignup(user));
+        
+      } else {
+        res.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+function onSignup(user){
+  setUser(user)
+}
+  
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form onSubmit={handleSubmit} className='auth-form'>
       <h2>Sign up</h2>
       <label>
         <span>username:</span>
         <input
-          required 
-          type="text" 
-          onChange={(e) => setUserName(e.target.value)} 
+          required
+          type='text'
+          onChange={(e) => setUserName(e.target.value)}
           value={username}
         />
       </label>
@@ -22,8 +50,8 @@ const Signup = () => {
         <span>password:</span>
         <input
           required
-          type="password" 
-          onChange={(e) => setPassword(e.target.value)} 
+          type='password'
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
       </label>
@@ -31,14 +59,17 @@ const Signup = () => {
         <span>confirm password:</span>
         <input
           required
-          type="password" 
-          onChange={(e) => SetPasswordConfirmation(e.target.value)} 
+          type='password'
+          onChange={(e) => SetPasswordConfirmation(e.target.value)}
           value={passWordConfirmation}
         />
-    </label>
-      <button className="btn">Sign up</button>
+      </label>
+      <button className='btn'>Sign up</button>
+      {errors.map((error) => {
+        <span key = {error} className='error'>{error}</span>;
+      })}
     </form>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

@@ -5,6 +5,8 @@ class UsersController < ApplicationController
       user = User.create!(user_params)
       session[:user_id]= user.id
       render json: user, status: :created
+  rescue ActiveRecord::RecordInvalid => invalid
+    render json:{error:invalid.record.errors.full_messages}, status: 422
   end
 
   def show
@@ -19,6 +21,6 @@ class UsersController < ApplicationController
   end
 
   def render_not_found_response
-  render json: { error: "Review not found"}, status: :not_found
+  render json: { error: ["User not found"]}, status: :not_found
   end
 end
