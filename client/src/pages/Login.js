@@ -25,6 +25,8 @@ const Login = ({setUser}) => {
       } else {
         res.json().then((err) => setErrors(err.error));
       }
+      setUserName("")
+      setPassword("")
     });
   }
   return (

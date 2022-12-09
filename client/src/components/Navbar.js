@@ -2,8 +2,8 @@ import React from 'react'
 import './Navbar.css'
 import {Link} from 'react-router-dom'
 import Rotten from '../images/potatohead.jpeg'
-// import LoggedIn from './LoggedIn'
-const Navbar = ({handleLogOutClick}) => {
+import LoggedIn from './LoggedIn'
+const Navbar = ({handleLogOutClick, user}) => {
 
 
   return (
@@ -13,12 +13,12 @@ const Navbar = ({handleLogOutClick}) => {
           <img src ={Rotten} alt="rotten potato" />
           <span>Rotten Potatoes</span>
         </li>
-       {/* <LoggedIn/> */}
         <li>
 
           <Link to="/reviews">Reviews</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
+       {!user ? <></> : <LoggedIn user={user}/>}
         </li>
         <li>
           <button className = 'btn' onClick={handleLogOutClick}>Logout</button>

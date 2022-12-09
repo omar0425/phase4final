@@ -36,7 +36,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <div className='container'>
-        <Navbar handleLogOutClick={handleLogOutClick}/>
+        <Navbar handleLogOutClick={handleLogOutClick} user={user}/>
           <Switch>
             <Route exact path="/">
               <Movies />

@@ -28,6 +28,9 @@ function Signup({ setUser }){
       } else {
         res.json().then((err) => setErrors(err.error));
       }
+      setUserName("")
+      setPassword("")
+      SetPasswordConfirmation("")
     });
   }
 
