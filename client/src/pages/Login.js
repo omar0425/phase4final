@@ -3,7 +3,30 @@ import React, {useState} from "react";
 const Login = ({setUser}) => {
   const[username,setUserName] = useState('')
   const [password, setPassword] =useState('')
-  function handleSubmit() {}
+  const [errors, setErrors] = useState([]);
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          console.log(user)
+          setUser(user)});
+        
+      } else {
+        res.json().then((err) => setErrors(err.error));
+      }
+    });
+  }
   return (
     <form onSubmit={handleSubmit} className='auth-form'>
       <h2>Login</h2>
@@ -27,7 +50,11 @@ const Login = ({setUser}) => {
       </label>
 
       <button className='btn'>Login</button>
+      {errors.map((error) => {
+       return  <span key = {error} className='error'>{error}</span>;
+      })}
     </form>
+    
   );
 };
 

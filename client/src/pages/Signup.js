@@ -23,17 +23,14 @@ function Signup({ setUser }){
       }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => onSignup(user));
+        res.json().then((user) => setUser(user));
         
       } else {
-        res.json().then((err) => setErrors(err.errors));
+        res.json().then((err) => setErrors(err.error));
       }
     });
   }
-function onSignup(user){
-  setUser(user)
-}
-  
+
   return (
     <form onSubmit={handleSubmit} className='auth-form'>
       <h2>Sign up</h2>
@@ -66,7 +63,7 @@ function onSignup(user){
       </label>
       <button className='btn'>Sign up</button>
       {errors.map((error) => {
-        <span key = {error} className='error'>{error}</span>;
+       return  <span key = {error} className='error'>{error}</span>;
       })}
     </form>
   );
