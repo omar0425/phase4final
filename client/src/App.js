@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import "./App.css";
 import Signup from "./pages/Signup";
-import Movies from "./pages/Movies";
+import Movies from "./pages/MovieList";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 
