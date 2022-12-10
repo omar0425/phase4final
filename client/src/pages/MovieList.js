@@ -2,15 +2,8 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 
-const MovieList = () => {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetch("/movies")
-      .then((r) => r.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
-  }, []);
+const MovieList = ({movies}) => {
+
 
   return (
     <div>

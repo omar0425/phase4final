@@ -4,12 +4,17 @@
 //add filter in reviews and movies to show users associated data
 //update styling
 
-import React from "react";
+import React,{useContext} from "react";
 import "../components/card.css";
 import { Link } from "react-router-dom";
+import { MyContext } from "./MyContext";
 const MovieCard = ({ movie }) => {
-
+  const{setMovieToReview} = useContext(MyContext)
+function handleClick(){
+  setMovieToReview(movie)
+}
   return (
+    
 
     <div className='card'>
       <h2 className='title'>{movie.title}</h2>
@@ -22,7 +27,7 @@ const MovieCard = ({ movie }) => {
       <br />
       <br />
       <Link to='/review/new'>
-      <button>Create a review</button>
+      <button onClick={handleClick}>Create a review</button>
       </Link>
       
     </div>

@@ -1,6 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
+import { MyContext } from '../components/MyContext'
 
 const ReviewForm = () => {
+  const {movieToReview} = useContext(MyContext)
   const [form, setForm] = useState({
     comment: '',
     rating: ''
@@ -28,11 +30,11 @@ function handleSubmit(e) {
   }).then((res) => {
     if (res.ok) {
       res.json().then((user) => {
-        onLogin(user)
+        
       });
 
     } else {
-      res.json().then((err) => setErrors(err.error));
+      // res.json().then((err) => setErrors(err.error));
     }
     setForm({
       username: '',
@@ -40,7 +42,7 @@ function handleSubmit(e) {
     })
   });
 }
-  
+  console.log(movieToReview)
   return (
     
       <div>
