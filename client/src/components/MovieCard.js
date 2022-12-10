@@ -6,6 +6,7 @@
 
 import React from "react";
 import "../components/card.css";
+import { Link } from "react-router-dom";
 const MovieCard = ({ movie }) => {
 
   return (
@@ -20,7 +21,10 @@ const MovieCard = ({ movie }) => {
       <br />
       <br />
       <br />
+      <Link to='/review/new'>
       <button>Create a review</button>
+      </Link>
+      
     </div>
   );
 };
