@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom";
 
-const MovieList = ({movies}) => {
- function handleClick(){}
-
-
+const MovieList = ({ movies }) => {
+  
 
   return (
     <div>
-      <button onClick={handleClick}>Create a New Movie</button>
+      <Link to="movie/new">
+        <button >Create a New Movie</button>
+      </Link>
       <section>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

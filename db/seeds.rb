@@ -143,9 +143,22 @@ Movie.create([
   },
 ])
 
-# User.create([{
-#   username: "Omar",
-#   password_digest:"nfajernkjf1221343nrkwlmekas"
+2.times do |n|
+  salt = BCrypt::Engine::generate_salt
+  passwordDigest = BCrypt::Engine::hash_secret("123", salt)
+  User.create(
+    password_digest: passwordDigest,
+    username: n + 1
+  )
+end
 
-# }])
+6.times do |n|
+  Review.create(
+    user_id: n % 2 == 0 ? 2 : 1,
+    movie_id: Random.rand(1..11),
+    comment: "#{Faker::Lorem.sentence(word_count: 10)}",
+    rating: "#{Random.rand(1..6)}/5"
+  )
+end
+
 puts "🌱 Done seeding!"
