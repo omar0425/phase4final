@@ -12,6 +12,8 @@ const Navbar = ({ handleLogOutClick, user }) => {
           <span>Rotten Potatoes</span>
         </li>
         <li>
+
+          <Link to='/movies'>Movies</Link>
           <Link to='/reviews'>Reviews</Link>
           {user ? (
             <></>

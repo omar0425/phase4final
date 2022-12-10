@@ -10,9 +10,12 @@ import MovieForm from "./pages/MovieForm";
 import MovieList from "./pages/MovieList";
 
 function App() {
-  const [movieToReview, setMovieToReview] = useState({})
+  const [movieToReview, setMovieToReview] = useState({});
   const [movies, setMovies] = useState([]);
-  const [reviews,setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const history = useHistory();
+
+  const [user, setUser] = useState(null);
   useEffect(() => {
     fetch("/movies")
       .then((r) => r.json())
@@ -28,9 +31,7 @@ function App() {
       });
   }, []);
 
-  const history = useHistory();
-
-  const [user, setUser] = useState(null);
+  console.log(user);
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -52,13 +53,24 @@ function App() {
   }
 
   return (
-    <MyContext.Provider value={{ user, setUser, movies, setMovies, reviews,setReviews,movieToReview,setMovieToReview }}>
+    <MyContext.Provider
+      value={{
+        user,
+        setUser,
+        movies,
+        setMovies,
+        reviews,
+        setReviews,
+        movieToReview,
+        setMovieToReview,
+      }}
+    >
       <div className='App'>
         <div className='container'>
           <Navbar handleLogOutClick={handleLogOutClick} user={user} />
           <Switch>
             <Route exact path='/movies'>
-              <MovieList />
+              <MovieList movies={movies} />
             </Route>
             <Route path='/movie/new'>
               <MovieForm />
@@ -70,7 +82,7 @@ function App() {
               <Signup setUser={setUser} />
             </Route>
             <Route path='/review/new'>
-              <ReviewForm setUser={setUser} />
+              <ReviewForm user={user} />
             </Route>
           </Switch>
         </div>

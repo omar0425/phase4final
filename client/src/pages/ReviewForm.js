@@ -1,77 +1,80 @@
-import React,{useState,useContext} from 'react'
-import { MyContext } from '../components/MyContext'
+import React, { useState, useContext } from "react";
+import { MyContext } from "../components/MyContext";
 
-const ReviewForm = () => {
-  const {movieToReview} = useContext(MyContext)
-  const [form, setForm] = useState({
-    comment: '',
-    rating: ''
-  })
-  function handleChange(e) {
-    let name = e.target.name
-    let value = e.target.value
-    setForm({ ...form, [name]: value })
+const ReviewForm = ({ user }) => {
+  const { movieToReview, setReviews, reviews } = useContext(MyContext);
+  const defaultValues ={
+    comment: "",
+    rating: "",
+    user_id: user.id || 0,
+    movie_id: movieToReview.id || 0,
   }
-// controls the login form
-function handleChange(e) {
-  let name = e.target.name
-  let value = e.target.value
-  setForm({ ...form, [name]: value })
-}
+  console.log(user);
+  const [form, setForm] = useState(defaultValues);
 
-function handleSubmit(e) {
-  e.preventDefault();
-  fetch("/review", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  }).then((res) => {
-    if (res.ok) {
-      res.json().then((user) => {
-        
-      });
+  const [errors, setErrors] = useState([]);
+  console.log("from Review form:", user);
+  function handleChange(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    setForm({ ...form, [name]: value });
+  }
+  // controls the login form
 
-    } else {
-      // res.json().then((err) => setErrors(err.error));
-    }
-    setForm({
-      username: '',
-      password: ''
-    })
-  });
-}
-  console.log(movieToReview)
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((review) => {
+          setReviews([...reviews, review]);
+        });
+      } else {
+        res.json().then((err) => setErrors(err.error));
+      }
+      setForm(defaultValues);
+    });
+  }
+  console.log(movieToReview);
+  console.log(reviews);
   return (
-    
-      <div>
-      <h4>Movie Reviews</h4>
+    <div>
+      <h3>Movie Reviews</h3>
+      <h1>{movieToReview.title}</h1>
 
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>Add new review:</span>
-          <textarea 
+          <textarea
             onChange={handleChange}
             value={form.comment}
-            name="comment"
-            
+            name='comment'
           ></textarea>
           {/* Stretch Goal make stars */}
           <span>Add rating:</span>
-          <textarea 
-          style={{minHeight:"10px", maxWidth:"10em"}}
-          onChange={handleChange}
-          name = "rating"
+          <textarea
+            style={{ minHeight: "10px", maxWidth: "10em" }}
+            onChange={handleChange}
+            name='rating'
             value={form.rating}
           ></textarea>
         </label>
-        <button className="btn">Add Review</button>
+        <button className='btn'>Add Review</button>
       </form>
+      {errors.map((error) => {
+        return (
+          <span key={error} className='error'>
+            {error}
+          </span>
+        );
+      })}
     </div>
-  )
-  
-  
-}
+  );
+};
 
 export default ReviewForm;
