@@ -99,7 +99,7 @@ Movie.create([
   {
     title: "Harry Potter and the Sorcerer's Stone",
     category: "Adventure",
-    poster_url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/0/0e/Philostone.jpg/revision/latest?cb=20160307194850",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
     description: "It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft and Wizardry and he finds out he's a wizard.",
     year: 2001,
     length: 152
@@ -115,30 +115,30 @@ Movie.create([
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Mad Max: Fury Road",
+    category: "Action",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTdjYTA4OGUwZjMyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+    description: "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and almost everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    year: 2015,
+    length: 120
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "John Wick",
+    category: "Action",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_.jpg",
+    description: 'John eventually became the top enforcer for the New York Russian crime syndicate, becoming a feared and ruthless hitman that people describe as "a man of focus, commitment, and sheer will". He was later nicknamed "Baba Yaga", being further described as the man one would send to "kill the Bogeyman"',
+    year: 2014,
+    length: 101
 
   },
   {
-    title: "",
-    category: "",
-    poster_url: "",
-    description: "",
-    year: 0,
-    length: 0
+    title: "Mr. & Mrs. Smith",
+    category: "Action",
+    poster_url: "https://m.media-amazon.com/images/M/MV5BMTUxMzcxNzQzOF5BMl5BanBnXkFtZTcwMzQxNjUyMw@@._V1_.jpg",
+    description: "The film stars Brad Pitt and Angelina Jolie as a bored upper middle class married couple surprised to learn that they are assassins belonging to competing agencies, and that they have been assigned to kill each other.",
+    year: 2005,
+    length: 120
 
   },
 ])
