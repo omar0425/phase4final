@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
  
+  #  Users#Signup
   def create
       user = User.create!(user_params)
       session[:user_id]= user.id
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   rescue ActiveRecord::RecordInvalid => invalid
     render json:{error:invalid.record.errors.full_messages}, status: 422
   end
-
+# User#me
   def show
     user = User.find(session[:user_id])
     render json: user, status: :created

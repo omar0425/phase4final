@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 
 function Signup({ setUser }){
@@ -6,6 +7,7 @@ function Signup({ setUser }){
   const [password, setPassword] = useState("");
   const [passWordConfirmation, SetPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
 
 
@@ -24,7 +26,7 @@ function Signup({ setUser }){
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => setUser(user));
-        
+        history.push("/movies")
       } else {
         res.json().then((err) => setErrors(err.error));
       }

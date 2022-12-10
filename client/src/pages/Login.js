@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 
 const Login = ({setUser}) => {
   const[username,setUserName] = useState('')
   const [password, setPassword] =useState('')
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
   
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +21,7 @@ const Login = ({setUser}) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+          history.push("/movies")
           console.log(user)
           setUser(user)});
         
