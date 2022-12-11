@@ -10,7 +10,7 @@ function ReviewCard({ review }) {
     fetch(`/reviews/${review.id}`, {
       method: "DELETE",
     });
-    const newReviews = reviews.filter((rev) => rev.id != review.id)
+    const newReviews = reviews.filter((rev) => rev.id !== review.id)
     setReviews(newReviews)
   }
   function onUpdateToggle() {
