@@ -23,6 +23,7 @@ const ReviewForm = ({ user }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setErrors([])
     fetch("/reviews", {
       method: "POST",
       headers: {
@@ -65,7 +66,6 @@ const ReviewForm = ({ user }) => {
           ></textarea>
         </label>
         <button className='btn'>Add Review</button>
-      </form>
       {errors.map((error) => {
         return (
           <span key={error} className='error'>
@@ -73,6 +73,7 @@ const ReviewForm = ({ user }) => {
           </span>
         );
       })}
+      </form>
     </div>
   );
 };

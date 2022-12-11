@@ -13,6 +13,7 @@ function Signup({ setUser }){
 
   function handleSubmit(e) {
     e.preventDefault();
+    setErrors([])
     fetch("/signup", {
       method: "POST",
       headers: {

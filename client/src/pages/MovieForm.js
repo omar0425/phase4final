@@ -13,6 +13,7 @@ const MovieForm = () => {
 console.log(formData)
   function handleSubmit(e) {
     e.preventDefault();
+    setErrors([])
     fetch("/movies", {
       method: "POST",
       headers: {
