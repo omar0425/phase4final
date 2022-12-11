@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import MovieForm from "./pages/MovieForm";
 import MovieList from "./pages/MovieList";
-
+import ReviewList from "./pages/ReviewList";
 function App() {
   const [movieToReview, setMovieToReview] = useState({});
   const [movies, setMovies] = useState([]);
@@ -83,6 +83,9 @@ function App() {
             </Route>
             <Route path='/review/new'>
               <ReviewForm user={user} />
+            </Route>
+            <Route path='/reviews'>
+              <ReviewList user={user} />
             </Route>
           </Switch>
         </div>
