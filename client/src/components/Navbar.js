@@ -12,9 +12,17 @@ const Navbar = ({ handleLogOutClick, user }) => {
           <span>Rotten Potatoes</span>
         </li>
         <li>
+          {!user ? (
+            <></>
+          ) : (
+            <>
+              {" "}
+              <Link to='/movies'>Movies</Link>
+              <Link to='/reviews'>Reviews</Link>{" "}
+            </>
+          )}
+          
 
-          <Link to='/movies'>Movies</Link>
-          <Link to='/reviews'>Reviews</Link>
           {user ? (
             <></>
           ) : (
@@ -26,11 +34,13 @@ const Navbar = ({ handleLogOutClick, user }) => {
           )}
           {!user ? <></> : <LoggedIn user={user} />}
         </li>
-        <li>
-          <button className='btn' onClick={handleLogOutClick}>
-            Logout
-          </button>
-        </li>
+            {!user ? <></> : 
+            <li>
+            <button className='btn' onClick={handleLogOutClick}>
+              Logout
+            </button>
+          </li>
+                    }
       </ul>
     </div>
   );

@@ -1,11 +1,18 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext, useEffect} from 'react'
 import { MyContext } from "./MyContext";
 function ReviewCardUpdate({ review, changeToggle }) {
   const [errors, setErrors] = useState([]);
-  const [form, setForm] = useState({ ...review });
+  const [form, setForm] = useState({
+    title:"",
+    comment:"",
+  rating:0});
   const { setReviews, reviews } = useContext(MyContext);
 
-
+   useEffect(()=>{
+    setForm(review)
+  },[])
+  
+  
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -42,8 +49,6 @@ function ReviewCardUpdate({ review, changeToggle }) {
     changeToggle()
   }
 
-  console.log("review from reviewcard", review)
-  console.log("this is the form from reciewcard", form)
 
   return (
     <>

@@ -23,7 +23,7 @@ const Login = ({setUser}) => {
       if (res.ok) {
         res.json().then((user) => {
           history.push("/movies")
-          console.log(user)
+          
           setUser(user)});
         
       } else {

@@ -2,18 +2,18 @@ import React, { useState, useContext } from "react";
 import { MyContext } from "../components/MyContext";
 
 const ReviewForm = ({ user }) => {
-  const { movieToReview, setReviews, reviews } = useContext(MyContext);
+  const { movieToReview, setReviews, reviews, setUser } = useContext(MyContext);
   const defaultValues ={
     comment: "",
     rating: "",
     user_id: user.id || 0,
     movie_id: movieToReview.id || 0,
   }
-  console.log(user);
+
   const [form, setForm] = useState(defaultValues);
 
   const [errors, setErrors] = useState([]);
-  console.log("from Review form:", user);
+ 
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -33,7 +33,10 @@ const ReviewForm = ({ user }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((review) => {
-          setReviews([...reviews, review]);
+          setReviews([...reviews, review])
+          
+          setUser({...user, movies: [...user.movies, review.movie]})
+          
         });
       } else {
         res.json().then((err) => setErrors(err.error));
@@ -41,8 +44,7 @@ const ReviewForm = ({ user }) => {
       setForm(defaultValues);
     });
   }
-  console.log(movieToReview);
-  console.log(reviews);
+
   return (
     <div>
       <h3>Movie Reviews</h3>

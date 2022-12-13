@@ -10,10 +10,13 @@ import MovieForm from "./pages/MovieForm";
 import MovieList from "./pages/MovieList";
 import ReviewList from "./pages/ReviewList";
 function App() {
+
+  console.log("app is firing")
   const [movieToReview, setMovieToReview] = useState({});
   const [movies, setMovies] = useState([]);
   const [reviews, setReviews] = useState([]);
   const history = useHistory();
+  
 
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -21,8 +24,10 @@ function App() {
       .then((r) => r.json())
       .then((movies) => {
         setMovies(movies);
+        console.log("app useffect is firng")
       });
   }, []);
+  
   useEffect(() => {
     fetch("/reviews")
       .then((r) => r.json())
@@ -31,7 +36,7 @@ function App() {
       });
   }, []);
 
-  console.log(user);
+
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -70,7 +75,7 @@ function App() {
           <Navbar handleLogOutClick={handleLogOutClick} user={user} />
           <Switch>
             <Route exact path='/movies'>
-              <MovieList movies={movies} />
+              <MovieList  />
             </Route>
             <Route path='/movie/new'>
               <MovieForm />

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
+import { MyContext } from "../components/MyContext";
 
 const MovieForm = () => {
+  const { setMovies, movies } = useContext(MyContext);
   const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -10,9 +12,16 @@ const MovieForm = () => {
     poster_url: "",
     category: "",
   });
-console.log(formData)
+
+  function handleChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  }
   function handleSubmit(e) {
     e.preventDefault();
+    setFormData(formData)
     setErrors([])
     fetch("/movies", {
       method: "POST",
@@ -22,16 +31,10 @@ console.log(formData)
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((newMovie) => console.log(newMovie));
+        response.json().then((newMovie) => setMovies([...movies, newMovie]));
       } else {
         response.json().then((errorData) => setErrors(errorData.errors));
       }
-    });
-  }
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
     });
   }
   return (

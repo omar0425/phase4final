@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  
-  #authorize
+  before_action :authorize 
+  skip_before_action :authorize, only: [:index, :create] 
+  before_action :authorize_create, only: [:create]
+  # authorize
  
   
   def index 
@@ -27,6 +29,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    
+
     review = find_review
     review.destroy
     render json: review
@@ -34,25 +38,35 @@ class ReviewsController < ApplicationController
 
 
   private
+  def render_not_found_response
+    render json: { error: "Movie not found"}, status: :not_found
+  end  
 
   def find_review
     Review.find(params[:id])
   end
-
+  
   def review_params
     params.permit(
-    :comment,
-    :title,
-    :rating,
-    :user_id,
-    :movie_id)
-  end
-  
-  def render_not_found_response
-    render json: { error: "Review not found"}, status: :not_found
-  end
+      :comment,
+      :title,
+      :rating,
+      :user_id,
+      :movie_id)
+    end
+    
+    def render_not_found_response
+      render json: { error: ["Review not found"]}, status: :not_found
+    end
   
   def render_unprocessable_entity_response invalid
     render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  end
+  
+  def authorize 
+    return render json: { error: ["Not authorized"] }, status: :unauthorized unless session[:user_id] == find_review.user_id
+  end
+  def authorize_create
+    return render json:{error: ["not authorized"]}, status: :unauthorized unless session.include? :user_id
   end
 end

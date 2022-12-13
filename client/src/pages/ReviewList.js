@@ -6,7 +6,7 @@ import ReviewCard from '../components/ReviewCard.js'
 function ReviewList ({user}) {
   const { reviews } = useContext(MyContext);
 
-  console.log(reviews)
+  
 
   return (
     <div className='project-list'>
