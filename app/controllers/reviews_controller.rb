@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  before_action :authorize 
+  before_action :authorize  
   skip_before_action :authorize, only: [:index, :create] 
   before_action :authorize_create, only: [:create]
+  
+
   # authorize
  
   
@@ -69,4 +71,6 @@ class ReviewsController < ApplicationController
   def authorize_create
     return render json:{error: ["not authorized"]}, status: :unauthorized unless session.include? :user_id
   end
+
+
 end

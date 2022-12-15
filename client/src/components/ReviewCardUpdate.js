@@ -10,7 +10,7 @@ function ReviewCardUpdate({ review, changeToggle }) {
 
    useEffect(()=>{
     setForm(review)
-  },[])
+  },[review])
   
   
   function handleChange(e) {
@@ -78,14 +78,15 @@ function ReviewCardUpdate({ review, changeToggle }) {
           ></textarea>
         </label>
         <button className='btn'>Update Review</button>
-        <button className='btn' onClick={handleCancel}>Cancel</button>
         {errors.map((error) => {
-          return (
-            <span key={error} className='error'>
-              {error}
-            </span>
-          );
-        })}
+        return (
+          <span key={error} className='error'>
+            {error}
+          </span>
+        );
+      })}
+        <button className='btn' onClick={handleCancel}>Cancel</button>
+
       </form>
     </>
   )

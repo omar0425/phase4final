@@ -45,6 +45,7 @@ function ReviewCard({ review }) {
         <b>{`Rating: ${review.rating}/5`}</b>
       </p>
       <button onClick={onUpdateToggle}>Update this review!</button>
+
       <button onClick={handleDeleteClick}>Delete this review!</button>
       {errors.map((error) => {
         return (
