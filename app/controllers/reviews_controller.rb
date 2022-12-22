@@ -1,13 +1,18 @@
 class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  before_action :authorize  
-  skip_before_action :authorize, only: [:index, :create] 
+  
+  # run authorize before everything
+  before_action :authorize 
+  # Do not run authorize on index create and show, therefore running authorize on update and delete
+  skip_before_action :authorize, only: [:index, :create, :show] 
+
+  # run authorize_create before create
   before_action :authorize_create, only: [:create]
   
 
   # authorize
- 
+
   
   def index 
     reviews = Review.all
@@ -15,6 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    
     review = find_review
     render json: review
   end
@@ -31,12 +37,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    
-
     review = find_review
     review.destroy
     render json: review
   end
+  
 
 
   private

@@ -1,7 +1,7 @@
 import React,{useState,useContext, useEffect} from 'react'
 import { MyContext } from "./MyContext";
-function ReviewCardUpdate({ review, changeToggle }) {
-  const [errors, setErrors] = useState([]);
+function ReviewCardUpdate({ review, changeToggle,setErrors }) {
+  // const [errors, setErrors] = useState([]);
   const [form, setForm] = useState({
     title:"",
     comment:"",
@@ -78,13 +78,13 @@ function ReviewCardUpdate({ review, changeToggle }) {
           ></textarea>
         </label>
         <button className='btn'>Update Review</button>
-        {errors.map((error) => {
+        {/* {errors.map((error) => {
         return (
           <span key={error} className='error'>
             {error}
           </span>
         );
-      })}
+      })} */}
         <button className='btn' onClick={handleCancel}>Cancel</button>
 
       </form>

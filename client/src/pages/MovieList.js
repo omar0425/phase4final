@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../components/MyContext";
 
 const MovieList = () => {
-  console.log("movielist is firing")
+  
   const { user, movies } = useContext(MyContext);
   const [filter, setFilter] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
+
+
   
 
   const movies_not_yet_reviewed = movies.filter((movie) => {
@@ -19,14 +21,14 @@ const MovieList = () => {
   useEffect(() => {
     if (filter === "") {
       setFilteredMovies(movies);
-      console.log(movies)
+      
     } else if (filter === "myMovies") {
       
       setFilteredMovies(user.movies);
-      console.log("2")
+      
     } else {
       setFilteredMovies(movies_not_yet_reviewed);
-      console.log("3")
+      
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter,movies],500)
@@ -43,6 +45,9 @@ const MovieList = () => {
 
   function handleChange(e) {
     setFilter(e.target.value);
+  }
+  function myMovies(){
+    console.log(user.movies)
   }
 
   return (
@@ -61,6 +66,7 @@ const MovieList = () => {
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </section>
+        <button onClick={myMovies}>My Movies</button>
       </div>
     </>
   );

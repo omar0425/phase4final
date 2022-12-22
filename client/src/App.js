@@ -11,7 +11,7 @@ import MovieList from "./pages/MovieList";
 import ReviewList from "./pages/ReviewList";
 function App() {
 
-  console.log("app is firing")
+  
   const [movieToReview, setMovieToReview] = useState({});
   const [movies, setMovies] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -24,7 +24,7 @@ function App() {
       .then((r) => r.json())
       .then((movies) => {
         setMovies(movies);
-        console.log("app useffect is firng")
+        
       });
   }, []);
   
@@ -73,7 +73,12 @@ function App() {
       <div className='App'>
         <div className='container'>
           <Navbar handleLogOutClick={handleLogOutClick} user={user} />
+              
           <Switch>
+          
+            <Route path='/signup'>
+              <Signup setUser={setUser} />
+            </Route>
             <Route exact path='/movies'>
               <MovieList  />
             </Route>
@@ -82,9 +87,6 @@ function App() {
             </Route>
             <Route path='/login'>
               <Login setUser={setUser} />
-            </Route>
-            <Route path='/signup'>
-              <Signup setUser={setUser} />
             </Route>
             <Route path='/review/new'>
               <ReviewForm user={user} />
