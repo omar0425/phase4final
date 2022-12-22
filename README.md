@@ -16,6 +16,10 @@ npm install --prefix client
 ```
 
 You can use the following commands to run the application:
+Make sure to seed and migrate data
+```
+rails db:migrate db:seed
+```
 run the backend on http://localhost:3000
 ```
 rails s

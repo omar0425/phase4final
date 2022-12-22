@@ -45,6 +45,7 @@ const MovieList = () => {
 
   function handleChange(e) {
     setFilter(e.target.value);
+    console.log(filteredMovies)
   }
 
 
@@ -53,7 +54,7 @@ const MovieList = () => {
       <select onChange={handleChange}>
         <option value=''>All Movies</option>
         <option value='myMovies'>My movies</option>
-        <option value='notMyMovies'>Not my movies</option>
+        {/* <option value='notMyMovies'>Not my movies</option> */}
       </select>
       <div>
         <Link to='movie/new'>

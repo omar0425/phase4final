@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   # run authorize before everything
   before_action :authorize 
   # Do not run authorize on index create and show, therefore running authorize on update and delete
-  skip_before_action :authorize, only: [:index, :create, :show] 
+  skip_before_action :authorize, only: [:index, :create, :show, :keyword] 
 
   # run authorize_create before create
   before_action :authorize_create, only: [:create]
@@ -42,6 +42,20 @@ class ReviewsController < ApplicationController
     render json: review
   end
   
+  # def keyword
+  #   keyword = Review.select{|r|r.comment.include?params[:keyword]}
+  #     #  render json: keyword
+  #     if keyword == []
+  #        render json: "review not found"
+  #     end
+  #     else  
+  #       render json: keyword
+  #     end
+    
+
+  # end
+
+  # // look at schema to find a character comment
 
 
   private
