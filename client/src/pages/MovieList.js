@@ -46,9 +46,7 @@ const MovieList = () => {
   function handleChange(e) {
     setFilter(e.target.value);
   }
-  function myMovies(){
-    console.log(user.movies)
-  }
+
 
   return (
     <>
@@ -66,7 +64,7 @@ const MovieList = () => {
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </section>
-        <button onClick={myMovies}>My Movies</button>
+        
       </div>
     </>
   );
